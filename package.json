@@ -13,7 +13,8 @@
 		"prisma:format": "prisma format",
 		"prisma:push": "prisma db push",
 		"prisma:studio": "prisma studio",
-		"prisma:generate": "prisma generate"
+		"prisma:generate": "prisma generate",
+		"postinstall": "prisma generate"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
