@@ -8,6 +8,6 @@
 	<title>Ark mission tracker</title>
 </svelte:head>
 
-<div class="bg-base w-screen min-h-screen">
+<div class="bg-base w-full min-h-screen">
 	<slot />
 </div>
