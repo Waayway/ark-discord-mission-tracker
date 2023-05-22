@@ -11,17 +11,34 @@ datasource db {
   relationMode = "prisma"
 }
 
+model User {
+  id                    Int       @id @default(autoincrement())
+  discord_id            String    @unique
+  username              String
+  img                   String
+  MissionCompletedBeta  Mission[] @relation("MissionBeta")
+  MissionCompletedGamma Mission[] @relation("MissionGamma")
+  MissionCompletedAlpha Mission[] @relation("MissionAlpha")
+}
+
 model Mission {
-  id          Int    @id @default(autoincrement())
-  icon        String
-  title       String
-  place       Place  @relation(fields: [placeId], references: [id])
-  placeId     Int
-  explanation String @db.Text
+  id             Int    @id @default(autoincrement())
+  icon           String
+  title          String
+  place          Place  @relation(fields: [placeId], references: [id])
+  placeId        Int
+  explanation    String @db.Text
+  completedBeta  User?  @relation(name: "MissionBeta", fields: [userBetaId], references: [id])
+  completedGamma User?  @relation(name: "MissionGamma", fields: [userGammaId], references: [id])
+  completedAlpha User?  @relation(name: "MissionAlpha", fields: [userAlphaId], references: [id])
+  userBetaId     Int?
+  userGammaId    Int?
+  userAlphaId    Int?
 }
 
 model Place {
   id      Int       @id @default(autoincrement())
+  name    String
   map     Map       @relation(fields: [mapId], references: [id])
   mapId   Int
   Mission Mission[]

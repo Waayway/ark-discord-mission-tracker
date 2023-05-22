@@ -2,6 +2,7 @@ import { SvelteKitAuth } from '@auth/sveltekit';
 import Discord from '@auth/core/providers/discord';
 import { DISCORD_ID, DISCORD_SECRET } from '$env/static/private';
 import { env } from '$env/dynamic/private';
+import { prisma } from 'lib/prisma';
 
 export const handle = SvelteKitAuth({
 	callbacks: {
@@ -28,6 +29,30 @@ export const handle = SvelteKitAuth({
 						break;
 					}
 				}
+			}
+			if (success) {
+				if (!ev.user || !ev.user.image || !ev.user.name) {
+					return false;
+				}
+				try {
+					let i = await prisma.user.count({
+						where: {
+							discord_id: ev.account.providerAccountId
+						}
+					});
+					if (i < 1) {
+						await prisma.user.create({
+							data: {
+								discord_id: ev.account.providerAccountId,
+								img: ev.user.image,
+								username: ev.user.name,
+							}
+						});
+					}
+				} catch (e) {
+					console.log(e);
+					return false;
+				};
 			}
 			return success;
 		}
