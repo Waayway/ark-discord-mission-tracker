@@ -3,8 +3,9 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {
-		// }
+		interface Locals {
+			discord_id: string;
+		}
 		// interface PageData {}
 		// interface Platform {}
 	}
