@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Mission {
+  id          Int    @id @default(autoincrement())
+  icon        String
+  title       String
+  place       Place  @relation(fields: [placeId], references: [id])
+  placeId     Int
+  explanation String @db.Text
+}
+
+model Place {
+  id      Int       @id @default(autoincrement())
+  map     Map       @relation(fields: [mapId], references: [id])
+  mapId   Int
+  Mission Mission[]
+}
+
+model Map {
+  id     Int     @id @default(autoincrement())
+  name   String
+  Places Place[]
+}
