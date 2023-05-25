@@ -3,10 +3,10 @@ import { prisma } from 'lib/prisma';
 import { capitalizeFirstCharacter } from 'lib/utils';
 
 export const POST: RequestHandler = async ({ request, locals, params }) => {
-	let difficulty = await request.text();
-	let sess = await locals.getSession();
+	const difficulty = await request.text();
+	await locals.getSession();
 	try {
-		let get_mission = await prisma.mission.findFirst({
+		const get_mission = await prisma.mission.findFirst({
 			where: {
 				title: params.mission,
 				place: {
@@ -22,21 +22,45 @@ export const POST: RequestHandler = async ({ request, locals, params }) => {
 				status: 404
 			});
 		}
-		let which = 'completed' + capitalizeFirstCharacter(difficulty);
-		let updated_mission = await prisma.mission.update({
-			data: {
-				[which]: {
-					connect: {
-						discord_id: locals.discord_id
+		let completed = false;
+		if (difficulty == 'alpha' && get_mission.userAlphaId) {
+			completed = true;
+		} else if (difficulty == 'beta' && get_mission.userBetaId) {
+			completed = true;
+		} else if (difficulty == 'gamma' && get_mission.userGammaId) {
+			completed = true;
+		}
+		if (!completed) {
+			const which = 'completed' + capitalizeFirstCharacter(difficulty);
+			const updated_mission = await prisma.mission.update({
+				data: {
+					[which]: {
+						connect: {
+							discord_id: locals.discord_id
+						}
 					}
+				},
+				where: {
+					id: get_mission?.id
 				}
-			},
-			where: {
-				id: get_mission?.id
+			});
+			if (updated_mission) {
+				return new Response('Mission has been updated');
 			}
-		});
-		if (updated_mission) {
-			return new Response('Mission has been updated');
+		} else {
+			const which = 'user' + capitalizeFirstCharacter(difficulty) + 'Id';
+
+			const updated_mission = await prisma.mission.update({
+				data: {
+					[which]: null
+				},
+				where: {
+					id: get_mission?.id
+				}
+			});
+			if (updated_mission) {
+				return new Response('Mission has been updated');
+			}
 		}
 		return new Response('Something went wrong', {
 			status: 500

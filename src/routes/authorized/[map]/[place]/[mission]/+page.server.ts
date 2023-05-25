@@ -2,7 +2,7 @@ import { prisma } from 'lib/prisma';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	let mission = await prisma.mission.findFirst({
+	const mission = await prisma.mission.findFirst({
 		where: {
 			place: {
 				name: params.place,

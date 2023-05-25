@@ -1,9 +1,9 @@
 <script lang="ts">
+	import MissionIcon from 'components/MissionIcon.svelte';
+	import { routeToPage } from 'lib/routing';
+	import type { Icons } from 'lib/types';
 	import { capitalizeFirstCharacter } from 'lib/utils';
 	import type { PageData } from './$types';
-	import MissionIcon from 'components/MissionIcon.svelte';
-	import type { Icons } from 'lib/types';
-	import { routeToPage } from 'lib/routing';
 
 	export let data: PageData;
 	let difficulties = ['alpha', 'beta', 'gamma'];
@@ -41,6 +41,12 @@
 			routeToPage(`/authorized/`);
 		}
 	};
+	const generateTextForDiff = (diff: string) => {
+		if (checkIfDiffHasBeenCompleted(diff)) {
+			return capitalizeFirstCharacter(diff) + ', click to reset';
+		}
+		return capitalizeFirstCharacter(diff);
+	};
 </script>
 
 <main>
@@ -58,8 +64,7 @@
 							await complete_difficulty(diff);
 						}}
 						class="text-xl text-{get_color(diff)}"
-						class:text-text={checkIfDiffHasBeenCompleted(diff)}
-						>{capitalizeFirstCharacter(diff)}</button
+						class:text-text={checkIfDiffHasBeenCompleted(diff)}>{generateTextForDiff(diff)}</button
 					>
 				</li>
 			{/each}
