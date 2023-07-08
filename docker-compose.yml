@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: ark-mission-tracker-db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "^Zk$1\"~};WZqH.SF"
+      POSTGRES_USER: "ark-mission-tracker"
+      POSTGRES_DB: ark-mission-tracker
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    container_name: ark-mission-tracker-app
+    env_file:
+      - .env
