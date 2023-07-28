@@ -3,7 +3,6 @@
 	import { signIn, signOut } from '@auth/sveltekit/client';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	console.log(data);
 </script>
 
 <main class="grid place-items-center h-screen">

@@ -17,6 +17,6 @@
 	</div>
 	<div class="flex items-center gap-4">
 		<h3 class="text-2xl">{userData?.name}</h3>
-		<img src={userData?.image} alt="" class="rounded-full bg-green h-24" />
+		<img src={userData?.image} alt="" class="rounded-full bg-green h-16" />
 	</div>
 </nav>

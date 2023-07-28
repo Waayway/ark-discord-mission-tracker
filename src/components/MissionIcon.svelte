@@ -10,6 +10,8 @@
 	import Retrieval from 'assets/Retrieval.png';
 
 	export let icon: Icons;
+	export let size: String = '32';
+
 	let icon_src = '';
 	switch (icon) {
 		case 'basketball':
@@ -34,7 +36,7 @@
 			icon_src = Race;
 			break;
 		case 'retrieval':
-			icon_src = Hunt;
+			icon_src = Retrieval;
 			break;
 		default:
 			break;
@@ -42,5 +44,5 @@
 </script>
 
 {#if icon}
-	<img src={icon_src} alt="" class="w-32 h-32" />
+	<img src={icon_src} alt="" class="w-{size} h-{size}" />
 {/if}

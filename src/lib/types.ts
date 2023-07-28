@@ -1,12 +1,20 @@
 export type LayoutProps = object;
 
-export type Icons =
-	| 'race'
-	| 'retrieval'
-	| 'gather'
-	| 'gauntlet'
-	| 'fishing'
-	| 'hunt'
-	| 'basketball'
-	| 'escort'
-	| undefined;
+export const IconsList = [
+	'race',
+	'retrieval',
+	'gather',
+	'gauntlet',
+	'fishing',
+	'hunt',
+	'basketball',
+	'escort'
+] as const;
+export type Icons = (typeof IconsList)[number] | undefined;
+
+export const isValidIcon = (icon: string | undefined): Icons | undefined => {
+	if (!icon) {
+		return;
+	}
+	return icon as Icons;
+};
