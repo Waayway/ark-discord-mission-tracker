@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { back_url } from 'lib/stores';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	back_url.set('');
 </script>
 
 <main class="grid grid-cols-2 place-items-center text-text mt-16 gap-4">

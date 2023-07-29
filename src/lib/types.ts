@@ -8,7 +8,8 @@ export const IconsList = [
 	'fishing',
 	'hunt',
 	'basketball',
-	'escort'
+	'escort',
+	'other'
 ] as const;
 export type Icons = (typeof IconsList)[number] | undefined;
 

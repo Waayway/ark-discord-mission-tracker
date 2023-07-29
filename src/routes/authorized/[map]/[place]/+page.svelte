@@ -4,10 +4,12 @@
 	import MdCheck from 'svelte-icons/md/MdCheck.svelte';
 	import MdDoNotDisturb from 'svelte-icons/md/MdDoNotDisturb.svelte';
 	import type { Icons } from 'lib/types';
+	import { back_url } from 'lib/stores';
 	export let data: PageData;
 	const isValidIcon = (icon: string): Icons => {
 		return icon as Icons;
 	};
+	back_url.set(`/authorized/${data.map}/`);
 </script>
 
 <main class="grid grid-cols-2 place-items-center text-text mt-16 gap-4 p-4">

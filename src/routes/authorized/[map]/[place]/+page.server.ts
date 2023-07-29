@@ -15,6 +15,9 @@ export const load: PageServerLoad = async ({ params }) => {
 					completedAlpha: true,
 					completedBeta: true,
 					completedGamma: true
+				},
+				orderBy: {
+					id: 'asc'
 				}
 			}
 		}

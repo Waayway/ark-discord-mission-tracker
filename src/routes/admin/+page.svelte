@@ -3,7 +3,9 @@
 	import type { PageData } from './$types';
 	import MissionIcon from 'components/MissionIcon.svelte';
 	import { isValidIcon } from 'lib/types';
-	import { goto, invalidate } from '$app/navigation';
+	import { back_url } from 'lib/stores';
+
+	back_url.set('');
 
 	export let data: PageData;
 	let new_map = {
@@ -69,6 +71,8 @@
 		if (!new_mission.explanation) set_mission_err('No explanation Present');
 		if (!submit_mission_err) {
 			new_mission.error = '';
+		} else {
+			return;
 		}
 
 		let res = await fetch('/admin/api/new_mission', {
@@ -100,11 +104,13 @@
 					<ul>
 						{#each place.Mission as mission}
 							<li>
-								<div class="flex items-center gap-2">
-									<MissionIcon icon={isValidIcon(mission.icon)} size="12" />
-									<h3>{mission.title}</h3>
-								</div>
-								<p class="w-64 text-left">{mission.explanation}</p>
+								<a href="/admin/{mission.title}">
+									<div class="flex items-center gap-2">
+										<MissionIcon icon={isValidIcon(mission.icon)} size="12" />
+										<h3>{mission.title}</h3>
+									</div>
+									<p class="w-64 text-left">{mission.explanation}</p>
+								</a>
 							</li>
 						{/each}
 						<li>

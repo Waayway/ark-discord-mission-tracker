@@ -8,6 +8,7 @@
 	import Hunt from 'assets/Hunt.png';
 	import Race from 'assets/Race.png';
 	import Retrieval from 'assets/Retrieval.png';
+	import InactiveMission from 'assets/InactiveMission.png';
 
 	export let icon: Icons;
 	export let size: String = '32';
@@ -37,6 +38,9 @@
 			break;
 		case 'retrieval':
 			icon_src = Retrieval;
+			break;
+		case 'other':
+			icon_src = InactiveMission;
 			break;
 		default:
 			break;

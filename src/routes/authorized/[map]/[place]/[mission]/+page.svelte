@@ -4,8 +4,10 @@
 	import type { Icons } from 'lib/types';
 	import { capitalizeFirstCharacter } from 'lib/utils';
 	import type { PageData } from './$types';
+	import { back_url } from 'lib/stores';
 
 	export let data: PageData;
+	back_url.set(`/authorized/${data.map}/${data.place}/`);
 	let difficulties = ['alpha', 'beta', 'gamma'];
 	let diff_to_color = {
 		alpha: 'red',
