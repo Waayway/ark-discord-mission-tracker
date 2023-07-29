@@ -8,6 +8,8 @@ RUN npm i
 
 RUN npm run build
 
+RUN npx prisma generate
+
 WORKDIR /app/build
 
-CMD [ "node ." ]
+CMD [ "sh", "../migrate-and-start.sh" ]
