@@ -39,8 +39,7 @@
 			body: diff
 		});
 		if (res.status == 200) {
-			console.log(res);
-			routeToPage(`/authorized/`);
+			routeToPage($back_url);
 		}
 	};
 	const generateTextForDiff = (diff: string) => {
@@ -52,7 +51,7 @@
 </script>
 
 <main>
-	<div class="bg-surface2 text-text max-w-screen-lg mx-auto mt-8 p-4 rounded-2xl">
+	<div class="bg-surface2 text-text max-w-screen-lg mx-auto mt-4 p-4 rounded-2xl">
 		<h1 class="text-4xl mb-2 flex items-center">
 			<MissionIcon icon={isValidIcon(data.data?.icon)} />{data.data?.title}
 		</h1>

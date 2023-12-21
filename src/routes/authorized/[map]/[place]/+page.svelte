@@ -12,9 +12,9 @@
 	back_url.set(`/authorized/${data.map}/`);
 </script>
 
-<main class="grid grid-cols-2 place-items-center text-text mt-16 gap-4 p-4">
+<main class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 place-items-center text-text gap-4 p-4">
 	{#each data.data?.Mission ?? [] as mis}
-		<div class="grid grid-cols-2 w-full justify-between p-8 bg-surface2 rounded-2xl">
+		<div class="grid grid-cols-2 w-full h-full justify-between p-8 bg-surface2 rounded-2xl">
 			<div>
 				<h1 class="text-2xl">
 					<MissionIcon icon={isValidIcon(mis.icon)} />{mis.title}

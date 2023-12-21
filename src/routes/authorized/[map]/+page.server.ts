@@ -18,6 +18,24 @@ export const load: PageServerLoad = async ({ params }) => {
 	if (!map) {
 		throw redirect(303, '/authorized');
 	}
+
+	let missions = await prisma.mission.findMany({
+		where: {
+			place: {
+				mapId: map.id
+			}
+		},
+		select: {
+			title: true,
+			icon: true,
+			place: {
+				select: {
+					name: true,
+				}
+			}
+		}
+	});
+
 	let placeStats: {
 		[key: string]: {
 			tot_missions: number;
@@ -48,6 +66,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	});
 	return {
 		map: map,
+		missions: missions,
 		place_stats: placeStats
 	};
 };
