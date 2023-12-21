@@ -32,18 +32,18 @@
 						</div>
 					</li>
 					<li class="flex items-center gap-4 justify-between">
-						<span class="text-blue">Gamma: </span>
+						<span class="text-blue">Beta: </span>
 						<div class="h-10 flex items-center gap-2">
-							{#if mis.userGammaId}<p>{mis.completedGamma?.username}</p>
-								<img class="h-10 rounded-full" src={mis.completedGamma?.img} alt="" /><MdCheck
+							{#if mis.userBetaId}<p>{mis.completedBeta?.username}</p>
+								<img class="h-10 rounded-full" src={mis.completedBeta?.img} alt="" /><MdCheck
 								/>{:else}<MdDoNotDisturb />{/if}
 						</div>
 					</li>
 					<li class="flex items-center gap-4 justify-between">
-						<span class="text-green">Beta: </span>
+						<span class="text-green">Gamma: </span>
 						<div class="h-10 flex items-center gap-2">
-							{#if mis.userBetaId}<p>{mis.completedBeta?.username}</p>
-								<img class="h-10 rounded-full" src={mis.completedBeta?.img} alt="" /><MdCheck
+							{#if mis.userGammaId}<p>{mis.completedGamma?.username}</p>
+								<img class="h-10 rounded-full" src={mis.completedGamma?.img} alt="" /><MdCheck
 								/>{:else}<MdDoNotDisturb />{/if}
 						</div>
 					</li>
