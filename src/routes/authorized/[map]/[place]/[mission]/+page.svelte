@@ -66,7 +66,7 @@
 						}}
 						class="text-xl text-pink"
 						class:text-text={checkIfDiffHasBeenCompleted('alpha')} >
-						{checkIfDiffHasBeenCompleted('alpha') ? "Completed" : "Complete"}
+						{checkIfDiffHasBeenCompleted('alpha') ? "Completed, click to reset" : "Complete"}
 					</button>
 				</li>
 				{:else}

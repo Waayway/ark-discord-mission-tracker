@@ -20,7 +20,7 @@
 			<img src={map.name.includes('1') ? Gen1Art : Gen2Art} alt="Art" class="rounded-xl" />
 			<ul class="text-lg text-left">
 				<li>
-					<span class="font-bold">Total missions</span> (including all difficulties): {map.total_missions}
+					<span class="font-bold">Total missions</span> (including all difficulties): {map.total_missions + map.total_singles}
 				</li>
 				<li>
 					<span class="text-red">Alpha</span> missions Done: {map.alpha}/{map.total_missions / 3}
@@ -30,6 +30,10 @@
 				</li>
 				<li>
 					<span class="text-green">Gamma</span> missions Done: {map.gamma}/{map.total_missions / 3}
+				</li>
+				
+				<li>
+					<span class="text-pink">Glitch</span> missions Done: {map.singles}/{map.total_singles}
 				</li>
 			</ul>
 		</a>

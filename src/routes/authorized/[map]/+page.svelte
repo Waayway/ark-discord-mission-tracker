@@ -17,7 +17,7 @@
 		<h3>{biome.name}</h3>
 		<ul>
 			<li>
-				Total missions (including all difficulties): {data.place_stats[biome.name].tot_missions}
+				Total missions (including all difficulties): {data.place_stats[biome.name].tot_missions + data.place_stats[biome.name].tot_singles}
 			</li>
 			<li>
 				<span class="text-red">Alpha</span> missions Done: {data.place_stats[biome.name]
@@ -30,6 +30,10 @@
 				<li>
 					<span class="text-green">Gamma</span> missions Done: {data.place_stats[biome.name]
 						.gamma_missions_done}/{data.place_stats[biome.name].tot_missions / 3}
+				</li>
+				<li>
+					<span class="text-pink">Glitch</span> missions Done: {data.place_stats[biome.name]
+						.singles_missions_done}/{data.place_stats[biome.name].tot_singles}
 				</li>
 			</ul>
 		</a>

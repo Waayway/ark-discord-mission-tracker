@@ -28,10 +28,13 @@ export const load: PageServerLoad = async () => {
         }[] = data.map((map) => {
             const missions = map.Places.map((place) => place.Mission).flat();
 
-            const alpha = missions.filter((mission) => mission.completedAlpha != null).length;
+            const single = missions.filter((mission) => mission.single).length;
+
+            const alpha = missions.filter((mission) => mission.completedAlpha != null && !mission.single).length;
             const beta = missions.filter((mission) => mission.completedBeta != null).length;
             const gamma = missions.filter((mission) => mission.completedGamma != null).length;
-            const total_missions = missions.length * 3;
+            const completed_singles = missions.filter((mission) => mission.completedAlpha != null && mission.single).length;
+            const total_missions = (missions.length - single) * 3;
 
             return {
                 name: map.name,
@@ -39,6 +42,8 @@ export const load: PageServerLoad = async () => {
                 beta,
                 gamma,
                 total_missions,
+                total_singles: single,
+                singles: completed_singles
             }
         });
 

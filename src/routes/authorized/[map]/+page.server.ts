@@ -42,6 +42,8 @@ export const load: PageServerLoad = async ({ params }) => {
 			beta_missions_done: number;
 			alpha_missions_done: number;
 			gamma_missions_done: number;
+			tot_singles: number;
+			singles_missions_done: number;
 		};
 	} = {};
 	map.Places.forEach((el) => {
@@ -49,9 +51,18 @@ export const load: PageServerLoad = async ({ params }) => {
 			tot_missions: 0,
 			alpha_missions_done: 0,
 			beta_missions_done: 0,
-			gamma_missions_done: 0
+			gamma_missions_done: 0,
+			tot_singles: 0,
+			singles_missions_done: 0
 		};
 		el.Mission.forEach((mis) => {
+			if (mis.single) {
+				placeStats[el.name].tot_singles++;
+				if (mis.userAlphaId) {
+					placeStats[el.name].singles_missions_done++;
+				}
+				return;
+			}
 			placeStats[el.name].tot_missions += 3;
 			if (mis.userAlphaId) {
 				placeStats[el.name].alpha_missions_done++;
