@@ -46,6 +46,7 @@ export const load: PageServerLoad = async () => {
             page_data: maps,
         }
     } catch (e) {
+        console.log(e); 
         return;
     }
 };

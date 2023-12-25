@@ -33,6 +33,7 @@ model Mission {
   userBetaId     Int?
   userGammaId    Int?
   userAlphaId    Int?
+  single  Boolean  @default(false)
 }
 
 model Place {

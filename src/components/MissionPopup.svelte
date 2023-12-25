@@ -9,6 +9,7 @@
 	export let submit_callback: () => Promise<void>;
 	export let cancel_callback: () => Promise<void>;
 	export let error: String;
+	export let single: boolean;
 </script>
 
 <div
@@ -46,9 +47,13 @@
 					class="bg-overlay1 p-2 rounded-lg col-span-2 text-2xl"
 					placeholder="Name"
 				/>
-				<div class="col-span-2 row-span-4 flex flex-col">
-					<h3>explanation</h3>
+				<div class="col-span-2 row-span-5 flex flex-col">
+					<h3>Explanation</h3>
 					<textarea class="bg-overlay1 p-2 rounded-lg w-96 h-full" bind:value={explanation} />
+					<div class="flex justify-center items-center gap-4 text-lg">
+						<label for="single-mission">Is 1 difficulty?</label>
+						<input type="checkbox" bind:checked={single} class="w-8 h-8" id="single-mission" />
+					</div>
 				</div>
 				<button on:click={cancel_callback} class="bg-red p-2 rounded-lg">Cancel</button>
 				<button on:click={submit_callback} class="bg-blue p-2 rounded-lg">Submit</button>

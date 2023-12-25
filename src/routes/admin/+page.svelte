@@ -44,7 +44,8 @@
 		explanation: '',
 		icon: '',
 		place_id: -1,
-		error: ''
+		error: '',
+		single: false
 	};
 	const open_new_mission_popup = (place_id: number) => {
 		new_mission = {
@@ -53,7 +54,8 @@
 			explanation: '',
 			icon: '',
 			place_id: place_id,
-			error: ''
+			error: '',
+			single: false
 		};
 	};
 	const close_new_mission_popup = async () => {
@@ -68,7 +70,7 @@
 		submit_mission_err = false;
 		if (!new_mission.icon) set_mission_err('No icon is selected');
 		if (!new_mission.name) set_mission_err('No name present');
-		if (!new_mission.explanation) set_mission_err('No explanation Present');
+		// if (!new_mission.explanation) set_mission_err('No explanation Present');
 		if (!submit_mission_err) {
 			new_mission.error = '';
 		} else {
@@ -81,7 +83,8 @@
 				name: new_mission.name,
 				explanation: new_mission.explanation,
 				icon: new_mission.icon,
-				place_id: new_mission.place_id
+				place_id: new_mission.place_id,
+				single: new_mission.single
 			})
 		});
 		let dat = await res.json();
@@ -109,7 +112,7 @@
 										<MissionIcon icon={isValidIcon(mission.icon)} size="12" />
 										<h3>{mission.title}</h3>
 									</div>
-									<p class="w-64 text-left">{mission.explanation}</p>
+									<p class="w-9/12 text-left">{mission.explanation}</p>
 								</a>
 							</li>
 						{/each}
@@ -186,6 +189,7 @@
 			bind:name={new_mission.name}
 			bind:explanation={new_mission.explanation}
 			bind:cur_icon={new_mission.icon}
+			bind:single={new_mission.single}
 			cancel_callback={close_new_mission_popup}
 			submit_callback={submit_new_mission}
 			error={new_mission.error}

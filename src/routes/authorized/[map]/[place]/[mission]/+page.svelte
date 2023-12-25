@@ -58,17 +58,30 @@
 		<p>{data.data?.explanation}</p>
 		<h1 class="text-4xl my-2 text-center">Click on the difficulty below to complete</h1>
 		<ul class="flex justify-around mt-8">
-			{#each difficulties as diff}
+			{#if data.data?.single}
 				<li>
 					<button
 						on:click={async () => {
-							await complete_difficulty(diff);
+							await complete_difficulty('alpha');
 						}}
-						class="text-xl text-{get_color(diff)}"
-						class:text-text={checkIfDiffHasBeenCompleted(diff)}>{generateTextForDiff(diff)}</button
-					>
+						class="text-xl text-pink"
+						class:text-text={checkIfDiffHasBeenCompleted('alpha')} >
+						{checkIfDiffHasBeenCompleted('alpha') ? "Completed" : "Complete"}
+					</button>
 				</li>
-			{/each}
+				{:else}
+				{#each difficulties as diff}
+					<li>
+						<button
+							on:click={async () => {
+								await complete_difficulty(diff);
+							}}
+							class="text-xl text-{get_color(diff)}"
+							class:text-text={checkIfDiffHasBeenCompleted(diff)}>{generateTextForDiff(diff)}</button
+						>
+					</li>
+				{/each}
+			{/if}
 		</ul>
 	</div>
 </main>

@@ -8,7 +8,8 @@ const schema = z.object({
 	name: z.string(),
 	explanation: z.string(),
 	icon: z.enum(IconsList),
-	place_id: z.number()
+	place_id: z.number(),
+	single: z.boolean()
 });
 
 export const POST: RequestHandler = async ({ request, locals, params }) => {
@@ -29,7 +30,8 @@ export const POST: RequestHandler = async ({ request, locals, params }) => {
 				explanation: data.explanation,
 				icon: data.icon,
 				title: data.name,
-				placeId: data.place_id
+				placeId: data.place_id,
+				single: data.single ?? false,
 			}
 		});
 		return json({
