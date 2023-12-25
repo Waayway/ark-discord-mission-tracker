@@ -17,7 +17,7 @@
 		<h3>{biome.name}</h3>
 		<ul>
 			<li>
-				Total missions (including all difficulties): {data.place_stats[biome.name].tot_missions - data.place_stats[biome.name].tot_singles * 2}
+				Total missions (including all difficulties): {data.place_stats[biome.name].tot_missions + data.place_stats[biome.name].tot_singles}
 			</li>
 			<li>
 				<span class="text-red">Alpha</span> missions Done: {data.place_stats[biome.name]
