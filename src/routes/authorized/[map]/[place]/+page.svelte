@@ -27,7 +27,7 @@
 					<li class="flex items-center gap-4 justify-between">
 						<span class="text-red">Alpha: </span>
 						<div class="h-10 flex items-center gap-2">
-							{#if mis.userAlphaId}<p>{mis.completedAlpha?.username}</p>
+							{#if mis.userAlphaId}
 								<img class="h-10 rounded-full" src={mis.completedAlpha?.img} alt="" /><MdCheck
 								/>{:else}<MdDoNotDisturb />{/if}
 						</div>
@@ -35,7 +35,7 @@
 					<li class="flex items-center gap-4 justify-between">
 						<span class="text-blue">Beta: </span>
 						<div class="h-10 flex items-center gap-2">
-							{#if mis.userBetaId}<p>{mis.completedBeta?.username}</p>
+							{#if mis.userBetaId}
 								<img class="h-10 rounded-full" src={mis.completedBeta?.img} alt="" /><MdCheck
 								/>{:else}<MdDoNotDisturb />{/if}
 						</div>
@@ -43,7 +43,7 @@
 					<li class="flex items-center gap-4 justify-between">
 						<span class="text-green">Gamma: </span>
 						<div class="h-10 flex items-center gap-2">
-							{#if mis.userGammaId}<p>{mis.completedGamma?.username}</p>
+							{#if mis.userGammaId}
 								<img class="h-10 rounded-full" src={mis.completedGamma?.img} alt="" /><MdCheck
 								/>{:else}<MdDoNotDisturb />{/if}
 						</div>
@@ -54,7 +54,7 @@
 					<li class="flex items-center gap-4 justify-between">
 						<span class="text-pink">Completed: </span>
 						<div class="h-10 flex items-center gap-2">
-							{#if mis.userAlphaId}<p>{mis.completedAlpha?.username}</p>
+							{#if mis.userAlphaId}
 								<img class="h-10 rounded-full" src={mis.completedAlpha?.img} alt="" /><MdCheck
 								/>{:else}<MdDoNotDisturb />{/if}
 						</div>
